@@ -226,6 +226,15 @@ else ifeq ($(platform), psp1)
    CFLAGS += -DHAVE_STRLWR -DPSP -G0
 	STATIC_LINKING = 1
 
+# PS2
+else ifeq ($(platform), ps2)
+	EXT=a
+   TARGET := $(TARGET_NAME)_libretro_$(platform).$(EXT)
+   CC = ee-gcc$(EXE_EXT)
+   AR = ee-ar$(EXE_EXT)
+   CFLAGS += -I$(PS2SDK)/common/include -I$(PS2SDK)/ee/include -DHAVE_STRLWR -DPS2
+   STATIC_LINKING = 1
+
 # Vita
 else ifeq ($(platform), vita)
 	EXT=a
