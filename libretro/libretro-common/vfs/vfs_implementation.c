@@ -52,7 +52,6 @@
 #  endif
 #  if defined(PS2)
 #    include <fileXio_rpc.h>
-#    include <fileXio_cdvd.h>
 #  endif
 #  include <sys/types.h>
 #  include <sys/stat.h>
@@ -1097,7 +1096,7 @@ libretro_vfs_implementation_dir *retro_vfs_opendir_impl(const char *name, bool i
 #elif defined(VITA) || defined(PSP)
    rdir->directory       = sceIoDopen(name);
 #elif defined(PS2)
-   rdir->directory       = ps2fileXioDopen(name);
+   rdir->directory       = fileXioDopen(name);
 #elif defined(_3DS)
    rdir->directory       = !string_is_empty(name) ? opendir(name) : NULL;
    rdir->entry           = NULL;
@@ -1140,7 +1139,7 @@ bool retro_vfs_readdir_impl(libretro_vfs_implementation_dir *rdir)
    return (sceIoDread(rdir->directory, &rdir->entry) > 0);
 #elif defined(PS2)
    iox_dirent_t record;
-   int ret = ps2fileXioDread(rdir->directory, &record);
+   int ret = fileXioDread(rdir->directory, &record);
    rdir->entry = record;
    return ( ret > 0);
 #elif defined(__CELLOS_LV2__)
@@ -1238,7 +1237,7 @@ int retro_vfs_closedir_impl(libretro_vfs_implementation_dir *rdir)
 #elif defined(VITA) || defined(PSP)
    sceIoDclose(rdir->directory);
 #elif defined(PS2)
-   ps2fileXioDclose(rdir->directory);
+   fileXioDclose(rdir->directory);
 #elif defined(__CELLOS_LV2__)
    rdir->error = cellFsClosedir(rdir->directory);
 #elif defined(ORBIS)
