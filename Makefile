@@ -232,7 +232,7 @@ else ifeq ($(platform), ps2)
    TARGET := $(TARGET_NAME)_libretro_$(platform).$(EXT)
    CC = ee-gcc$(EXE_EXT)
    AR = ee-ar$(EXE_EXT)
-   CFLAGS += -I$(PS2SDK)/common/include -I$(PS2SDK)/ee/include -DHAVE_STRLWR -DPS2 -DHAVE_VSNPRINTF
+   CFLAGS += -I$(PS2SDK)/common/include -I$(PS2SDK)/ee/include -DHAVE_STRLWR -DPS2 -DHAVE_VSNPRINTF -DMEMORY_LOW
    STATIC_LINKING = 1
 
 # Vita

@@ -63,7 +63,7 @@ int lprintf(OutputLevels pri, const char *s, ...)
 #endif
   va_end(v);
 
-  r=fprintf(stderr,"%s",msg);           /* select output at console */
+  r=printf("%s",msg);           /* select output at console */
 
   return r;
 }
@@ -89,6 +89,6 @@ bool I_Error(const char *error, ...)
   vsprintf(errmsg,error,argptr);
 #endif
   va_end(argptr);
-  lprintf(LO_ERROR, "%s\n", errmsg);
+  printf("%s\n", errmsg);
   return false;
 }
