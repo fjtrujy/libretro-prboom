@@ -65,7 +65,11 @@
 // define compiled-specific long-long contstant notation here
 #define LONGLONG(num)   (uint64_t)num ## ll
 // for strcasecmp in POSIX/BSD systems
+#if !defined(PS2)
 #include <strings.h>
+#else
+#include <string.h>
+#endif
 #else
 // define compiled-specific long-long contstant notation here
 #define LONGLONG(num) (uint64_t)num
