@@ -147,7 +147,12 @@ int R_PointOnSide(fixed_t x, fixed_t y, const node_t *node)
   // Try to quickly decide by looking at sign bits.
   if ((node->dy ^ node->dx ^ x ^ y) < 0)
     return (node->dy ^ x) < 0;  // (left is negative)
-  return FixedMul(y, node->dx>>FRACBITS) >= FixedMul(node->dy>>FRACBITS, x);
+  // return FixedMul(y, node->dx>>FRACBITS) >= FixedMul(node->dy>>FRACBITS, x);
+
+  int value_a = (y * (node->dx>>FRACBITS)) >> FRACBITS;
+  int value_b = (x * (node->dy>>FRACBITS)) >> FRACBITS;
+
+  return value_a >= value_b;
 }
 
 // killough 5/2/98: reformatted
