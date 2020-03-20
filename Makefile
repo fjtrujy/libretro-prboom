@@ -219,12 +219,12 @@ else ifeq ($(platform), psl1ght)
 
 # PSP1
 else ifeq ($(platform), ps2)
-	EXT=a
+   EXT=a
    TARGET := $(TARGET_NAME)_libretro_$(platform).$(EXT)
-   CC = ee-gcc$(EXE_EXT)
-   AR = ee-ar$(EXE_EXT)
+   CC = mips64r5900el-ps2-elf-gcc$(EXE_EXT)
+   AR = mips64r5900el-ps2-elf-ar$(EXE_EXT)
    CFLAGS += -DHAVE_STRLWR -DPS2 -G0
-	STATIC_LINKING = 1
+   STATIC_LINKING = 1
 
 # PSP1
 else ifeq ($(platform), psp1)
