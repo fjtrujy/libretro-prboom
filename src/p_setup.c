@@ -459,7 +459,7 @@ static int checkGLVertex(int num)
 static float GetDistance(int dx, int dy)
 {
   float fx = (float)(dx)/FRACUNIT, fy = (float)(dy)/FRACUNIT;
-  return fast_sqrt(fx*fx + fy*fy);
+  return sqrt(fx*fx + fy*fy);
 }
 
 
