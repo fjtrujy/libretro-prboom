@@ -117,22 +117,22 @@ enum
 };
 
 
-static float fast_sqrt(float n)
-{
-	float		prev = 0.0f;
-	float		cur  = 1.0f;
+// static float fast_sqrt(float n)
+// {
+// 	float		prev = 0.0f;
+// 	float		cur  = 1.0f;
 
-	if (n == 0)
-		return 0;
+// 	if (n == 0)
+// 		return 0;
 
-	while (prev != cur)
-	{
-		prev = cur;
-		cur  = 0.5 * (prev + (n / prev));
-	}
+// 	while (prev != cur)
+// 	{
+// 		prev = cur;
+// 		cur  = 0.5 * (prev + (n / prev));
+// 	}
 
-	return cur;
-}
+// 	return cur;
+// }
 
 //
 // P_GetNodesVersion
@@ -469,7 +469,7 @@ static int GetOffset(vertex_t *v1, vertex_t *v2)
   int r;
   a = (float)(v1->x - v2->x) / (float)FRACUNIT;
   b = (float)(v1->y - v2->y) / (float)FRACUNIT;
-  r = (int)(fast_sqrt(a*a+b*b) * (float)FRACUNIT);
+  r = (int)(sqrt(a*a+b*b) * (float)FRACUNIT);
   return r;
 }
 
