@@ -217,7 +217,7 @@ else ifeq ($(platform), psl1ght)
    CFLAGS += -DMSB_FIRST -DHAVE_STRLWR
 	STATIC_LINKING = 1
 
-# PSP1
+# PS2
 else ifeq ($(platform), ps2)
    EXT=a
    TARGET := $(TARGET_NAME)_libretro_$(platform).$(EXT)
@@ -611,11 +611,11 @@ else
 	CXXFLAGS += -MD
 endif
 
-CFLAGS += -O2 -DNDEBUG
-CXXFLAGS += -O2 -DNDEBUG
+CFLAGS += -O3 -DNDEBUG
+CXXFLAGS += -O3 -DNDEBUG
 else
-	CFLAGS += -O2 -DNDEBUG
-	CXXFLAGS += -O2 -DNDEBUG
+	CFLAGS += -O3 -DNDEBUG
+	CXXFLAGS += -03 -DNDEBUG
 endif
 endif
 
