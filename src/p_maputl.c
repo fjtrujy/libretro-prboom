@@ -114,8 +114,7 @@ static int P_PointOnDivlineSide(fixed_t x, fixed_t y, const divline_t *line)
     !line->dx ? x <= line->x ? line->dy > 0 : line->dy < 0 :
     !line->dy ? y <= line->y ? line->dx < 0 : line->dx > 0 :
     (line->dy^line->dx^(x -= line->x)^(y -= line->y)) < 0 ? (line->dy^x) < 0 :
-    // FixedMul(y>>8, line->dx>>8) >= FixedMul(line->dy>>8, x>>8);
-    ((y>>8) * (line->dx>>8)) >> FRACBITS >= ((line->dy>>8) * (x>>8)) >> FRACBITS;
+    FixedMul(y>>8, line->dx>>8) >= FixedMul(line->dy>>8, x>>8);
 }
 
 //
